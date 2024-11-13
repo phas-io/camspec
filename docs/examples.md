@@ -248,7 +248,10 @@ nav_order: 8
       "manifestId": "550e8400-e29b-41d4-a716-446655440005",
       "type": "FORBIDDEN_ORIENTATION",
       "value": {
-        "normals": [[0, 0, 1], [0, 1, 0]],
+        "normals": [
+          [0, 0, 1], 
+          [0, 1, 0]
+          ],
         "tolerance": 5,
         "units": "deg"
       }
@@ -257,7 +260,10 @@ nav_order: 8
       "manifestId": "550e8400-e29b-41d4-a716-446655440006",
       "type": "FORBIDDEN_ORIENTATION",
       "value": {
-        "normals": [[0, 0, 1], [0, 1, 0]],
+        "normals": [
+          [0, 0, 1], 
+          [0, 1, 0]
+          ],
         "tolerance": 5,
         "units": "deg"
       }

@@ -25,7 +25,11 @@ Specifies an exact orientation for a part using a 3x3 rotation matrix.
   "manifestId": "550e8400-e29b-41d4-a716-446655440000",
   "type": "FIXED_ORIENTATION",
   "value": {
-    "rotation": [1, 0, 0, 0, 1, 0, 0, 0, 1]
+    "rotation": [
+      1, 0, 0, 
+      0, 1, 0, 
+      0, 0, 1
+    ]
   }
 }
 ```
@@ -58,7 +62,10 @@ Defines directions that cannot face downward, useful for avoiding support struct
   "manifestId": "550e8400-e29b-41d4-a716-446655440000",
   "type": "FORBIDDEN_ORIENTATION",
   "value": {
-    "normals": [[0, 0, 1], [0, 1, 0]],
+    "normals": [
+      [0, 0, 1], 
+      [0, 1, 0]
+      ],
     "tolerance": 10,
     "units": "deg"
   }
