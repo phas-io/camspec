@@ -10,3 +10,6 @@ defaults:
       type: "pages"
     values:
       layout: "default"
+
+ga_tracking: GTM-KM8QQT7D
+ga_tracking_anonymize_ip: true
