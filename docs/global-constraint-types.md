@@ -8,7 +8,7 @@ nav_order: 6
 ## Table of contents
 {: .no_toc .text-delta }
 
-TOC
+1. TOC
 {:toc}
 
 ---
@@ -31,6 +31,7 @@ Defines the minimum required spacing between any two parts.
 ```
 
 ### Properties
+
 | Property | Type | Description |
 |:---------|:-----|:------------|
 | distance | number | Minimum distance between parts (>0) |
@@ -72,6 +73,7 @@ Defines different spacing requirements based on part size.
 ```
 
 ### Properties
+
 | Property | Type | Description |
 |:---------|:-----|:------------|
 | smallParts.maxVolume | number | Maximum volume for small parts (mm³) |

@@ -8,7 +8,7 @@ nav_order: 5
 ## Table of contents
 {: .no_toc .text-delta }
 
-TOC
+1. TOC
 {:toc}
 
 ---
@@ -31,6 +31,7 @@ Specifies an exact orientation for a part using a 3x3 rotation matrix.
 ```
 
 ### Properties
+
 | Property | Type | Description |
 |:---------|:-----|:------------|
 | rotation | array[9] | 3x3 rotation matrix in row-major order |
@@ -65,6 +66,7 @@ Defines directions that cannot face downward, useful for avoiding support struct
 ```
 
 ### Properties
+
 | Property | Type | Description |
 |:---------|:-----|:------------|
 | normals | array[array[3]] | Array of normal vectors that cannot point downward |
@@ -102,6 +104,7 @@ Sets an exact position for a part in the build volume.
 ```
 
 ### Properties
+
 | Property | Type | Description |
 |:---------|:-----|:------------|
 | x | number | X-coordinate in build volume |
@@ -142,6 +145,7 @@ Defines allowable position bounds for a part.
 ```
 
 ### Properties
+
 | Property | Type | Description |
 |:---------|:-----|:------------|
 | bounds.x | object | Min/max X-coordinates |

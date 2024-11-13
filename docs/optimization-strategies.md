@@ -8,7 +8,7 @@ nav_order: 7
 ## Table of contents
 {: .no_toc .text-delta }
 
-TOC
+1. TOC
 {:toc}
 
 ---
