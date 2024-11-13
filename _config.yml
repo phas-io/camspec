@@ -11,5 +11,5 @@ defaults:
     values:
       layout: "default"
 
-ga_tracking: GTM-KM8QQT7D
+ga_tracking: G-L1117N2NRY
 ga_tracking_anonymize_ip: true
