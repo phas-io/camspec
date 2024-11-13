@@ -52,6 +52,49 @@ Specifies an exact orientation for a part using a 3x3 rotation matrix.
 
 ---
 
+## RANGE_ORIENTATION
+
+Defines an allowed range of rotations around a specific axis, enabling controlled part orientation flexibility.
+
+### Schema
+```json
+{
+  "manifestId": "550e8400-e29b-41d4-a716-446655440000",
+  "type": "RANGE_ORIENTATION",
+  "value": {
+    "axis": [0, 0, 1],
+    "range": {
+      "min": -45,
+      "max": 45
+    },
+    "units": "deg"
+  }
+}
+```
+
+### Properties
+
+| Property | Type | Description |
+|:---------|:-----|:------------|
+| axis | array[3] | Vector defining rotation axis [x, y, z] |
+| range.min | number | Minimum allowed rotation angle (-180 to 180) |
+| range.max | number | Maximum allowed rotation angle (-180 to 180) |
+| units | string | Must be "deg" or "rad" |
+
+### Usage Notes
+- Axis vector must be normalized
+- Min/max angles define the allowed rotation range around the axis
+- Multiple RANGE_ORIENTATION constraints can be combined
+- Range bounds are inclusive
+
+### Example Use Cases
+- Parts that can rotate within specific limits
+- Cylindrical features with orientation flexibility
+- Aesthetic components with limited variation allowed
+- Support optimization with controlled freedom
+
+---
+
 ## FORBIDDEN_ORIENTATION
 
 Defines directions that cannot face downward, useful for avoiding support structures or maintaining surface quality.

@@ -62,7 +62,8 @@
                             "mm",
                             "in",
                             "m",
-                            "cm"
+                            "cm",
+                            "ft"
                         ],
                         "description": "Units of the original CAD file"
                     },
@@ -114,13 +115,10 @@
                         "type": "string",
                         "enum": [
                             "FIXED_ORIENTATION",
+                            "RANGE_ORIENTATION",
                             "FORBIDDEN_ORIENTATION",
                             "FIXED_LOCATION",
-                            "RANGE_LOCATION",
-                            "NESTING_PREFERENCE",
-                            "MIN_DENSITY",
-                            "MAX_DENSITY",
-                            "MAX_BUILD_HEIGHT"
+                            "RANGE_LOCATION"
                         ]
                     },
                     "value": {
@@ -145,10 +143,59 @@
                             },
                             {
                                 "type": "object",
+                                "description": "RANGE_ORIENTATION value",
+                                "required": [
+                                    "axis",
+                                    "range",
+                                    "units"
+                                ],
+                                "properties": {
+                                    "axis": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "number"
+                                        },
+                                        "minItems": 3,
+                                        "maxItems": 3,
+                                        "description": "Rotation axis vector [x, y, z]"
+                                    },
+                                    "range": {
+                                        "type": "object",
+                                        "required": [
+                                            "min",
+                                            "max"
+                                        ],
+                                        "properties": {
+                                            "min": {
+                                                "type": "number",
+                                                "minimum": -180,
+                                                "maximum": 180,
+                                                "description": "Minimum rotation angle"
+                                            },
+                                            "max": {
+                                                "type": "number",
+                                                "minimum": -180,
+                                                "maximum": 180,
+                                                "description": "Maximum rotation angle"
+                                            }
+                                        }
+                                    },
+                                    "units": {
+                                        "type": "string",
+                                        "enum": [
+                                            "deg",
+                                            "rad"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
                                 "description": "FORBIDDEN_ORIENTATION value",
                                 "required": [
                                     "normals",
-                                    "tolerance"
+                                    "tolerance",
+                                    "units"
                                 ],
                                 "properties": {
                                     "normals": {
@@ -159,9 +206,9 @@
                                                 "type": "number"
                                             },
                                             "minItems": 3,
-                                            "maxItems": 3,
-                                            "description": "Array of normal vectors that cannot point downward"
-                                        }
+                                            "maxItems": 3
+                                        },
+                                        "description": "Array of normal vectors that cannot point downward"
                                     },
                                     "tolerance": {
                                         "type": "number",
@@ -172,7 +219,8 @@
                                     "units": {
                                         "type": "string",
                                         "enum": [
-                                            "deg"
+                                            "deg",
+                                            "rad"
                                         ]
                                     }
                                 }
@@ -199,7 +247,10 @@
                                     "units": {
                                         "type": "string",
                                         "enum": [
-                                            "mm"
+                                            "mm",
+                                            "cm",
+                                            "in",
+                                            "ft"
                                         ]
                                     }
                                 }
@@ -253,33 +304,10 @@
                                     "units": {
                                         "type": "string",
                                         "enum": [
-                                            "mm"
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "NESTING_PREFERENCE value",
-                                "required": [
-                                    "preferredLocation",
-                                    "preferredHeight"
-                                ],
-                                "properties": {
-                                    "preferredLocation": {
-                                        "type": "string",
-                                        "enum": [
-                                            "edge",
-                                            "center",
-                                            "corner"
-                                        ]
-                                    },
-                                    "preferredHeight": {
-                                        "type": "string",
-                                        "enum": [
-                                            "bottom",
-                                            "top",
-                                            "middle"
+                                            "mm",
+                                            "cm",
+                                            "in",
+                                            "ft"
                                         ]
                                     }
                                 }
@@ -302,8 +330,7 @@
                         "type": "string",
                         "enum": [
                             "MIN_PART_DISTANCE",
-                            "VOLUME_BASED_SPACING",
-                            "VERTICAL_DISTRIBUTION"
+                            "VOLUME_BASED_SPACING"
                         ]
                     },
                     "value": {
@@ -324,7 +351,10 @@
                                     "units": {
                                         "type": "string",
                                         "enum": [
-                                            "mm"
+                                            "mm",
+                                            "cm",
+                                            "in",
+                                            "ft"
                                         ]
                                     }
                                 }
@@ -358,7 +388,10 @@
                                             "units": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "mm"
+                                                    "mm",
+                                                    "cm",
+                                                    "in",
+                                                    "ft"
                                                 ]
                                             }
                                         }
@@ -384,45 +417,13 @@
                                             "units": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "mm"
+                                                    "mm",
+                                                    "cm",
+                                                    "in",
+                                                    "ft"
                                                 ]
                                             }
                                         }
-                                    }
-                                }
-                            },
-                            {
-                                "type": "object",
-                                "description": "VERTICAL_DISTRIBUTION value",
-                                "required": [
-                                    "maxPartsPerHeight",
-                                    "units"
-                                ],
-                                "properties": {
-                                    "maxPartsPerHeight": {
-                                        "type": "object",
-                                        "required": [
-                                            "height",
-                                            "maxParts"
-                                        ],
-                                        "properties": {
-                                            "height": {
-                                                "type": "number",
-                                                "minimum": 0,
-                                                "description": "Height interval for part distribution control"
-                                            },
-                                            "maxParts": {
-                                                "type": "integer",
-                                                "minimum": 1,
-                                                "description": "Maximum number of parts allowed within the height interval"
-                                            }
-                                        }
-                                    },
-                                    "units": {
-                                        "type": "string",
-                                        "enum": [
-                                            "mm"
-                                        ]
                                     }
                                 }
                             }
