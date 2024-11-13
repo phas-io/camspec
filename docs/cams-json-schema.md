@@ -87,11 +87,15 @@ The `globalConstraints` array defines requirements affecting all models, for exa
 
 ```json
 {
-  "type": "MIN_PART_DISTANCE",
-  "value": {
-    "distance": 2.0,
-    "units": "mm"
-  }
+  "globalConstraints": [
+    {
+      "type": "MIN_PART_DISTANCE",
+      "value": {
+        "distance": 2.0,
+        "units": "mm"
+      }
+    }
+  ]
 }
 ```
 

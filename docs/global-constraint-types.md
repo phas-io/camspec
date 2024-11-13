@@ -35,7 +35,7 @@ Defines the minimum required spacing between any two parts.
 | Property | Type | Description |
 |:---------|:-----|:------------|
 | distance | number | Minimum distance between parts (>0) |
-| units | string | Must be "mm" |
+| units | string | Must be "mm", "cm", "in" or "ft" |
 
 ### Usage Notes
 - Applies to all parts regardless of size
@@ -78,8 +78,10 @@ Defines different spacing requirements based on part size.
 |:---------|:-----|:------------|
 | smallParts.maxVolume | number | Maximum volume for small parts (mm³) |
 | smallParts.minSpacing | number | Minimum spacing for small parts |
+| smallParts.units | string | Must be "mm", "cm", "in" or "ft" |
 | largeParts.minVolume | number | Minimum volume for large parts (mm³) |
 | largeParts.minSpacing | number | Minimum spacing for large parts |
+| largeParts.units | string | Must be "mm", "cm", "in" or "ft" |
 
 ### Usage Notes
 - Parts between size ranges use linear interpolation

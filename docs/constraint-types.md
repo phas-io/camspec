@@ -71,7 +71,7 @@ Defines directions that cannot face downward, useful for avoiding support struct
 |:---------|:-----|:------------|
 | normals | array[array[3]] | Array of normal vectors that cannot point downward |
 | tolerance | number | Allowed deviation in degrees (0-180) |
-| units | string | Must be "deg" |
+| units | string | Must be "deg" or "rad" |
 
 ### Usage Notes
 - Normal vectors must be unit vectors
@@ -110,7 +110,7 @@ Sets an exact position for a part in the build volume.
 | x | number | X-coordinate in build volume |
 | y | number | Y-coordinate in build volume |
 | z | number | Z-coordinate in build volume |
-| units | string | Must be "mm" |
+| units | string | Must be "mm", "cm", "in" or "ft" |
 
 ### Usage Notes
 - Coordinates are relative to build volume origin
@@ -151,7 +151,7 @@ Defines allowable position bounds for a part.
 | bounds.x | object | Min/max X-coordinates |
 | bounds.y | object | Min/max Y-coordinates |
 | bounds.z | object | Min/max Z-coordinates |
-| units | string | Must be "mm" |
+| units | string | Must be "mm", "cm", "in" or "ft" |
 
 ### Usage Notes
 - All coordinates are optional
