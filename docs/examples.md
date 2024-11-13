@@ -261,14 +261,6 @@ nav_order: 8
         "tolerance": 5,
         "units": "deg"
       }
-    },
-    {
-      "manifestId": "550e8400-e29b-41d4-a716-446655440007",
-      "type": "NESTING_PREFERENCE",
-      "value": {
-        "preferredLocation": "center",
-        "preferredHeight": "bottom"
-      }
     }
   ],
   "globalConstraints": [
@@ -276,16 +268,6 @@ nav_order: 8
       "type": "MIN_PART_DISTANCE",
       "value": {
         "distance": 3.0,
-        "units": "mm"
-      }
-    },
-    {
-      "type": "VERTICAL_DISTRIBUTION",
-      "value": {
-        "maxPartsPerHeight": {
-          "height": 50.0,
-          "maxParts": 4
-        },
         "units": "mm"
       }
     }
