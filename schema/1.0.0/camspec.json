@@ -1,0 +1,459 @@
+{
+    "$schema": "https://camspec.org/schema/v1.0.0/camspec.json",
+    "type": "object",
+    "required": [
+        "version",
+        "manifest",
+        "constraints",
+        "globalConstraints"
+    ],
+    "properties": {
+        "version": {
+            "type": "string",
+            "description": "CAMS specification version",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "manifest": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "file",
+                    "format",
+                    "priority",
+                    "referenceTransform",
+                    "units"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier for this instance"
+                    },
+                    "file": {
+                        "type": "string",
+                        "description": "Relative path to file in models directory"
+                    },
+                    "format": {
+                        "type": "string",
+                        "enum": [
+                            "STEP",
+                            "STL_ASCII",
+                            "STL_BINARY",
+                            "OBJ",
+                            "BREP",
+                            "IGES"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Optional human-readable name"
+                    },
+                    "priority": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 100,
+                        "description": "Priority level (0-100). Higher numbers indicate higher priority"
+                    },
+                    "units": {
+                        "type": "string",
+                        "enum": [
+                            "mm",
+                            "in",
+                            "m",
+                            "cm"
+                        ],
+                        "description": "Units of the original CAD file"
+                    },
+                    "referenceTransform": {
+                        "type": "object",
+                        "required": [
+                            "rotation",
+                            "translation"
+                        ],
+                        "properties": {
+                            "rotation": {
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "minItems": 9,
+                                "maxItems": 9,
+                                "description": "3x3 rotation matrix in row-major order"
+                            },
+                            "translation": {
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "minItems": 3,
+                                "maxItems": 3,
+                                "description": "Translation vector [x, y, z]"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "constraints": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "manifestId",
+                    "type",
+                    "value"
+                ],
+                "properties": {
+                    "manifestId": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "FIXED_ORIENTATION",
+                            "FORBIDDEN_ORIENTATION",
+                            "FIXED_LOCATION",
+                            "RANGE_LOCATION",
+                            "NESTING_PREFERENCE",
+                            "MIN_DENSITY",
+                            "MAX_DENSITY",
+                            "MAX_BUILD_HEIGHT"
+                        ]
+                    },
+                    "value": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "description": "FIXED_ORIENTATION value",
+                                "required": [
+                                    "rotation"
+                                ],
+                                "properties": {
+                                    "rotation": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "number"
+                                        },
+                                        "minItems": 9,
+                                        "maxItems": 9,
+                                        "description": "3x3 rotation matrix in row-major order"
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "FORBIDDEN_ORIENTATION value",
+                                "required": [
+                                    "normals",
+                                    "tolerance"
+                                ],
+                                "properties": {
+                                    "normals": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            },
+                                            "minItems": 3,
+                                            "maxItems": 3,
+                                            "description": "Array of normal vectors that cannot point downward"
+                                        }
+                                    },
+                                    "tolerance": {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 180,
+                                        "description": "Allowed deviation in degrees"
+                                    },
+                                    "units": {
+                                        "type": "string",
+                                        "enum": [
+                                            "deg"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "FIXED_LOCATION value",
+                                "required": [
+                                    "x",
+                                    "y",
+                                    "z",
+                                    "units"
+                                ],
+                                "properties": {
+                                    "x": {
+                                        "type": "number"
+                                    },
+                                    "y": {
+                                        "type": "number"
+                                    },
+                                    "z": {
+                                        "type": "number"
+                                    },
+                                    "units": {
+                                        "type": "string",
+                                        "enum": [
+                                            "mm"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "RANGE_LOCATION value",
+                                "required": [
+                                    "bounds",
+                                    "units"
+                                ],
+                                "properties": {
+                                    "bounds": {
+                                        "type": "object",
+                                        "properties": {
+                                            "x": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "min": {
+                                                        "type": "number"
+                                                    },
+                                                    "max": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            },
+                                            "y": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "min": {
+                                                        "type": "number"
+                                                    },
+                                                    "max": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            },
+                                            "z": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "min": {
+                                                        "type": "number"
+                                                    },
+                                                    "max": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "units": {
+                                        "type": "string",
+                                        "enum": [
+                                            "mm"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "NESTING_PREFERENCE value",
+                                "required": [
+                                    "preferredLocation",
+                                    "preferredHeight"
+                                ],
+                                "properties": {
+                                    "preferredLocation": {
+                                        "type": "string",
+                                        "enum": [
+                                            "edge",
+                                            "center",
+                                            "corner"
+                                        ]
+                                    },
+                                    "preferredHeight": {
+                                        "type": "string",
+                                        "enum": [
+                                            "bottom",
+                                            "top",
+                                            "middle"
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "globalConstraints": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "type",
+                    "value"
+                ],
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "MIN_PART_DISTANCE",
+                            "VOLUME_BASED_SPACING",
+                            "VERTICAL_DISTRIBUTION"
+                        ]
+                    },
+                    "value": {
+                        "oneOf": [
+                            {
+                                "type": "object",
+                                "description": "MIN_PART_DISTANCE value",
+                                "required": [
+                                    "distance",
+                                    "units"
+                                ],
+                                "properties": {
+                                    "distance": {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "description": "Minimum distance between any two parts"
+                                    },
+                                    "units": {
+                                        "type": "string",
+                                        "enum": [
+                                            "mm"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "VOLUME_BASED_SPACING value",
+                                "required": [
+                                    "smallParts",
+                                    "largeParts"
+                                ],
+                                "properties": {
+                                    "smallParts": {
+                                        "type": "object",
+                                        "required": [
+                                            "maxVolume",
+                                            "minSpacing",
+                                            "units"
+                                        ],
+                                        "properties": {
+                                            "maxVolume": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "description": "Maximum volume to be considered a small part (in cubic mm)"
+                                            },
+                                            "minSpacing": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "description": "Minimum spacing required between small parts"
+                                            },
+                                            "units": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "mm"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "largeParts": {
+                                        "type": "object",
+                                        "required": [
+                                            "minVolume",
+                                            "minSpacing",
+                                            "units"
+                                        ],
+                                        "properties": {
+                                            "minVolume": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "description": "Minimum volume to be considered a large part (in cubic mm)"
+                                            },
+                                            "minSpacing": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "description": "Minimum spacing required between large parts"
+                                            },
+                                            "units": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "mm"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "description": "VERTICAL_DISTRIBUTION value",
+                                "required": [
+                                    "maxPartsPerHeight",
+                                    "units"
+                                ],
+                                "properties": {
+                                    "maxPartsPerHeight": {
+                                        "type": "object",
+                                        "required": [
+                                            "height",
+                                            "maxParts"
+                                        ],
+                                        "properties": {
+                                            "height": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "description": "Height interval for part distribution control"
+                                            },
+                                            "maxParts": {
+                                                "type": "integer",
+                                                "minimum": 1,
+                                                "description": "Maximum number of parts allowed within the height interval"
+                                            }
+                                        }
+                                    },
+                                    "units": {
+                                        "type": "string",
+                                        "enum": [
+                                            "mm"
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "optimization": {
+            "type": "object",
+            "required": [
+                "strategy",
+                "weight"
+            ],
+            "properties": {
+                "strategy": {
+                    "type": "string",
+                    "enum": [
+                        "MINIMIZE_HEIGHT",
+                        "MAXIMIZE_DENSITY",
+                        "MINIMIZE_SUPPORT"
+                    ],
+                    "description": "Primary optimization strategy"
+                },
+                "weight": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Weight of optimization strategy (0-1)"
+                }
+            }
+        }
+    }
+}
