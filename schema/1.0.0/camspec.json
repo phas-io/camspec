@@ -1,5 +1,5 @@
 {
-    "$schema": "https://camspec.org/schema/v1.0.0/camspec.json",
+    "$schema": "https://camspec.org/schema/1.0.0/camspec.json",
     "type": "object",
     "required": [
         "version",
