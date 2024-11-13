@@ -85,34 +85,12 @@ The `constraints` array defines specific requirements for individual models, for
 
 The `globalConstraints` array defines requirements affecting all models, for example:
 
-### MIN_PART_DISTANCE
-Minimum spacing between any two parts:
 ```json
 {
   "type": "MIN_PART_DISTANCE",
   "value": {
     "distance": 2.0,
     "units": "mm"
-  }
-}
-```
-
-### VOLUME_BASED_SPACING
-Different spacing requirements based on part size:
-```json
-{
-  "type": "VOLUME_BASED_SPACING",
-  "value": {
-    "smallParts": {
-      "maxVolume": 125000,
-      "minSpacing": 2,
-      "units": "mm"
-    },
-    "largeParts": {
-      "minVolume": 1000000,
-      "minSpacing": 5,
-      "units": "mm"
-    }
   }
 }
 ```
