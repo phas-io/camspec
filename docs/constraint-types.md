@@ -3,14 +3,13 @@ title: Constraint types
 nav_order: 5
 ---
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+TOC
 {:toc}
-</details>
 
 ---
 
@@ -33,7 +32,7 @@ Specifies an exact orientation for a part using a 3x3 rotation matrix.
 
 ### Properties
 | Property | Type | Description |
-|----------|------|-------------|
+|:---------|:-----|:------------|
 | rotation | array[9] | 3x3 rotation matrix in row-major order |
 
 ### Usage Notes
@@ -67,7 +66,7 @@ Defines directions that cannot face downward, useful for avoiding support struct
 
 ### Properties
 | Property | Type | Description |
-|----------|------|-------------|
+|:---------|:-----|:------------|
 | normals | array[array[3]] | Array of normal vectors that cannot point downward |
 | tolerance | number | Allowed deviation in degrees (0-180) |
 | units | string | Must be "deg" |
@@ -104,7 +103,7 @@ Sets an exact position for a part in the build volume.
 
 ### Properties
 | Property | Type | Description |
-|----------|------|-------------|
+|:---------|:-----|:------------|
 | x | number | X-coordinate in build volume |
 | y | number | Y-coordinate in build volume |
 | z | number | Z-coordinate in build volume |
@@ -144,7 +143,7 @@ Defines allowable position bounds for a part.
 
 ### Properties
 | Property | Type | Description |
-|----------|------|-------------|
+|:---------|:-----|:------------|
 | bounds.x | object | Min/max X-coordinates |
 | bounds.y | object | Min/max Y-coordinates |
 | bounds.z | object | Min/max Z-coordinates |
@@ -159,37 +158,3 @@ Defines allowable position bounds for a part.
 - Parts that must stay within specific build areas
 - Height-restricted builds
 - Thermal zone restrictions
-
----
-
-## NESTING_PREFERENCE
-
-Indicates preferred positioning strategy for a part.
-
-### Schema
-```json
-{
-  "manifestId": "550e8400-e29b-41d4-a716-446655440000",
-  "type": "NESTING_PREFERENCE",
-  "value": {
-    "preferredLocation": "center",
-    "preferredHeight": "bottom"
-  }
-}
-```
-
-### Properties
-| Property | Type | Description |
-|----------|------|-------------|
-| preferredLocation | string | One of: "edge", "center", "corner" |
-| preferredHeight | string | One of: "bottom", "top", "middle" |
-
-### Usage Notes
-- Suggestions rather than strict requirements
-- May be overridden by optimization strategies
-- Used to influence part placement
-
-### Example Use Cases
-- Thermal considerations (edge vs center)
-- Parts sensitive to recoater direction
-- Build plate adhesion requirements

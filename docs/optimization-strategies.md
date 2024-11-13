@@ -3,14 +3,13 @@ title: Optimization strategies
 nav_order: 7
 ---
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+TOC
 {:toc}
-</details>
 
 ---
 
@@ -32,7 +31,7 @@ The `optimization` object defines how parts should be arranged when multiple val
 ## Properties
 
 | Property | Type | Description |
-|----------|------|-------------|
+|:---------|:-----|:------------|
 | strategy | string | Primary optimization goal |
 | weight | number | Strategy importance (0-1) |
 

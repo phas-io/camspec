@@ -3,14 +3,13 @@ title: Global Constraint types
 nav_order: 6
 ---
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-1. TOC
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+TOC
 {:toc}
-</details>
 
 ---
 
@@ -33,7 +32,7 @@ Defines the minimum required spacing between any two parts.
 
 ### Properties
 | Property | Type | Description |
-|----------|------|-------------|
+|:---------|:-----|:------------|
 | distance | number | Minimum distance between parts (>0) |
 | units | string | Must be "mm" |
 
@@ -74,7 +73,7 @@ Defines different spacing requirements based on part size.
 
 ### Properties
 | Property | Type | Description |
-|----------|------|-------------|
+|:---------|:-----|:------------|
 | smallParts.maxVolume | number | Maximum volume for small parts (mm³) |
 | smallParts.minSpacing | number | Minimum spacing for small parts |
 | largeParts.minVolume | number | Minimum volume for large parts (mm³) |
@@ -89,40 +88,3 @@ Defines different spacing requirements based on part size.
 - Thermal management for different part sizes
 - Optimizing packing density
 - Managing part removal complexity
-
----
-
-## VERTICAL_DISTRIBUTION
-
-Controls the distribution of parts across build height.
-
-### Schema
-```json
-{
-  "type": "VERTICAL_DISTRIBUTION",
-  "value": {
-    "maxPartsPerHeight": {
-      "height": 50.0,
-      "maxParts": 4
-    },
-    "units": "mm"
-  }
-}
-```
-
-### Properties
-| Property | Type | Description |
-|----------|------|-------------|
-| height | number | Height interval for part counting |
-| maxParts | integer | Maximum parts per interval |
-| units | string | Must be "mm" |
-
-### Usage Notes
-- Height intervals start from build plate
-- Parts counted in any interval they intersect
-- Used to prevent dense clustering
-
-### Example Use Cases
-- Managing thermal distribution
-- Controlling recoater load
-- Optimizing build time vs. density
