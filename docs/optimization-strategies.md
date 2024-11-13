@@ -1,6 +1,16 @@
 ---
 title: Optimization strategies
-nav_order: 6
+nav_order: 7
+---
+
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ---
 
 # Optimization Strategies

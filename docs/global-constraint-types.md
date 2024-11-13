@@ -1,6 +1,16 @@
 ---
 title: Global Constraint types
-nav_order: 5
+nav_order: 6
+---
+
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ---
 
 # Global Constraints

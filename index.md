@@ -1,6 +1,7 @@
 ---
 title: Home
 layout: home
+nav_order: 1
 ---
 
 The CAMSPEC format (.cams/.camspec) is a file format designed to communicate manufacturing constraints and requirements between order management systems and Computer Aided Manufacturing (CAM) software. It enables precise specification of part orientation, positioning, and manufacturing constraints for multiple manufacturing processes.

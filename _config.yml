@@ -3,3 +3,10 @@ description: The documentation for the CAMSPEC specification format
 theme: just-the-docs
 
 url: https://www.camspec.org
+
+defaults:
+  - scope:
+      path: "docs" # an empty string here means all files in the project
+      type: "pages"
+    values:
+      layout: "default"

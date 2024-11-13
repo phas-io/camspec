@@ -1,6 +1,6 @@
 ---
 title: .cams.json schema
-nav_order: 3
+nav_order: 4
 ---
 
 # .cams.json schema
