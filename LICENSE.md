@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2024 CAMSPEC Specification Contributors
+Copyright (c) 2025 CAMSPEC Specification Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of the CAMSPEC Specification and associated documentation files (the "Specification"), 
