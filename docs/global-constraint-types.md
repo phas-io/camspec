@@ -61,12 +61,12 @@ Defines different spacing requirements based on part size.
     "smallParts": {
       "maxVolume": 125000,
       "minSpacing": 2,
-      "units": "mm"
+      "units": "MM"
     },
     "largeParts": {
       "minVolume": 1000000,
       "minSpacing": 5,
-      "units": "mm"
+      "units": "MM"
     }
   }
 }
@@ -78,10 +78,10 @@ Defines different spacing requirements based on part size.
 |:---------|:-----|:------------|
 | smallParts.maxVolume | number | Maximum volume for small parts (mm³) |
 | smallParts.minSpacing | number | Minimum spacing for small parts |
-| smallParts.units | string | Must be "mm", "cm", "in" or "ft" |
+| smallParts.units | string | Must be "MM", "CM", "IN" or "FT" |
 | largeParts.minVolume | number | Minimum volume for large parts (mm³) |
 | largeParts.minSpacing | number | Minimum spacing for large parts |
-| largeParts.units | string | Must be "mm", "cm", "in" or "ft" |
+| largeParts.units | string | Must be "MM", "CM", "IN" or "FT" |
 
 ### Usage Notes
 - Parts between size ranges use linear interpolation

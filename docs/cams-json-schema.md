@@ -11,6 +11,7 @@ A CAMSPEC document consists of four main sections:
 
 ```json
 {
+  "$schema": "https://camspec.org/schema/1.0.0/camspec.json",
   "version": "1.0.0",
   "manifest": [...],
   "constraints": [...],
@@ -42,7 +43,7 @@ The `manifest` section lists all CAD models included in the specification. Each 
       "name": "Example Part",
       "priority": 75,
       "quantity": 1,
-      "units": "mm",
+      "units": "MM",
       "referenceTransform": {
         "rotation": [1, 0, 0, 0, 1, 0, 0, 0, 1],
         "translation": [0, 0, 0]
@@ -62,7 +63,7 @@ The `manifest` section lists all CAD models included in the specification. Each 
 | name | No | Human-readable identifier |
 | priority | Yes | Importance (0-100, higher = more important) |
 | quantity | Yes | The quantity of parts to produce |
-| units | Yes | Model units (mm, in, m, cm) |
+| units | Yes | Model units (MM, CM, FT, IN) |
 | referenceTransform | Yes | Transform to standard orientation |
 
 ## Constraints
@@ -94,7 +95,7 @@ The `globalConstraints` array defines requirements affecting all models, for exa
       "type": "MIN_PART_DISTANCE",
       "value": {
         "distance": 2.0,
-        "units": "mm"
+        "units": "MM"
       }
     }
   ]

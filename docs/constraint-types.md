@@ -67,7 +67,7 @@ Defines an allowed range of rotations around a specific axis, enabling controlle
       "min": -45,
       "max": 45
     },
-    "units": "deg"
+    "units": "DEG"
   }
 }
 ```
@@ -79,7 +79,7 @@ Defines an allowed range of rotations around a specific axis, enabling controlle
 | axis | array[3] | Vector defining rotation axis [x, y, z] |
 | range.min | number | Minimum allowed rotation angle (-180 to 180) |
 | range.max | number | Maximum allowed rotation angle (-180 to 180) |
-| units | string | Must be "deg" or "rad" |
+| units | string | Must be "DEG" or "RAD" |
 
 ### Usage Notes
 - Axis vector must be normalized
@@ -110,7 +110,7 @@ Defines directions that cannot face downward, useful for avoiding support struct
       [0, 1, 0]
       ],
     "tolerance": 10,
-    "units": "deg"
+    "units": "DEG"
   }
 }
 ```
@@ -121,7 +121,7 @@ Defines directions that cannot face downward, useful for avoiding support struct
 |:---------|:-----|:------------|
 | normals | array[array[3]] | Array of normal vectors that cannot point downward |
 | tolerance | number | Allowed deviation in degrees (0-180) |
-| units | string | Must be "deg" or "rad" |
+| units | string | Must be "DEG" or "RAD" |
 
 ### Usage Notes
 - Normal vectors must be unit vectors
@@ -148,7 +148,7 @@ Sets an exact position for a part in the build volume.
     "x": 0,
     "y": 0,
     "z": 0,
-    "units": "mm"
+    "units": "MM"
   }
 }
 ```
@@ -160,7 +160,7 @@ Sets an exact position for a part in the build volume.
 | x | number | X-coordinate in build volume |
 | y | number | Y-coordinate in build volume |
 | z | number | Z-coordinate in build volume |
-| units | string | Must be "mm", "cm", "in" or "ft" |
+| units | string | Must be "MM", "CM", "IN" or "FT" |
 
 ### Usage Notes
 - Coordinates are relative to build volume origin
@@ -189,7 +189,7 @@ Defines allowable position bounds for a part.
       "y": {"min": 0, "max": 100},
       "z": {"min": 0, "max": 50}
     },
-    "units": "mm"
+    "units": "MM"
   }
 }
 ```
@@ -201,7 +201,7 @@ Defines allowable position bounds for a part.
 | bounds.x | object | Min/max X-coordinates |
 | bounds.y | object | Min/max Y-coordinates |
 | bounds.z | object | Min/max Z-coordinates |
-| units | string | Must be "mm", "cm", "in" or "ft" |
+| units | string | Must be "MM", "CM", "IN" or "FT" |
 
 ### Usage Notes
 - All coordinates are optional

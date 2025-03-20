@@ -13,10 +13,45 @@ nav_order: 8
 
 ---
 
+## Example 0: Bare minimum example
+
+You can download an [example, fully formed CAMSPEC file here.](https://camspec.org/examples/1.0.0/bare-minimum.camspec)
+
+```json
+{
+    "$schema": "https://camspec.org/schema/1.0.0/camspec.json",
+    "version": "1.0.0",
+    "manifest": [
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440000",
+            "file": "critical_part.stl",
+            "quantity": 5,
+            "units": "MM"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440020",
+            "file": "critical_part.stl",
+            "quantity": 3,
+            "units": "MM"
+        },
+        {
+            "id": "550e8400-e29b-41d4-a716-446655440001",
+            "file": "support_bracket.stl",
+            "quantity": 5,
+            "units": "MM"
+        }
+    ],
+    "constraints": [],
+    "globalConstraints": []
+}
+
+```
+
 ## Example 1: Basic Multi-Part Print
 
 ```json
 {
+  "$schema": "https://camspec.org/schema/1.0.0/camspec.json",
   "version": "0.1.0",
   "manifest": [
     {
@@ -26,7 +61,7 @@ nav_order: 8
       "name": "Precision Surface Part",
       "priority": 100,
       "quantity": 5,
-      "units": "mm",
+      "units": "MM",
       "referenceTransform": {
         "rotation": [
 	        1, 0, 0, 
@@ -43,7 +78,7 @@ nav_order: 8
       "name": "Support Bracket",
       "priority": 50,
       "quantity": 1,
-      "units": "mm",
+      "units": "MM",
       "referenceTransform": {
         "rotation": [
 	        1, 0, 0, 
@@ -61,7 +96,7 @@ nav_order: 8
       "value": {
         "normals": [[0, 0, 1]],
         "tolerance": 10,
-        "units": "deg"
+        "units": "DEG"
       }
     }
   ],
@@ -70,7 +105,7 @@ nav_order: 8
       "type": "MIN_PART_DISTANCE",
       "value": {
         "distance": 2.0,
-        "units": "mm"
+        "units": "MM"
       }
     }
   ],
@@ -86,6 +121,7 @@ nav_order: 8
 
 ```json
 {
+  "$schema": "https://camspec.org/schema/1.0.0/camspec.json",
   "version": "0.1.0",
   "manifest": [
     {
@@ -95,7 +131,7 @@ nav_order: 8
       "name": "Main Housing",
       "priority": 100,
       "quantity": 5,
-      "units": "mm",
+      "units": "MM",
       "referenceTransform": {
         "rotation": [
 	        1, 0, 0, 
@@ -112,7 +148,7 @@ nav_order: 8
       "name": "Cover Plate",
       "priority": 100,
       "quantity": 5,
-      "units": "in",
+      "units": "IN",
       "referenceTransform": {
         "rotation": [
 	        1, 0, 0, 
@@ -129,7 +165,7 @@ nav_order: 8
       "name": "Optional Spacer",
       "priority": 25,
       "quantity": 5,
-      "units": "mm",
+      "units": "MM",
       "referenceTransform": {
         "rotation": [
 	        1, 0, 0, 
@@ -148,7 +184,7 @@ nav_order: 8
         "x": 0,
         "y": 0,
         "z": 0,
-        "units": "mm"
+        "units": "MM"
       }
     }
   ],
@@ -159,12 +195,12 @@ nav_order: 8
         "smallParts": {
           "maxVolume": 125000,
           "minSpacing": 2,
-          "units": "mm"
+          "units": "MM"
         },
         "largeParts": {
           "minVolume": 1000000,
           "minSpacing": 5,
-          "units": "mm"
+          "units": "MM"
         }
       }
     }
@@ -181,6 +217,7 @@ nav_order: 8
 
 ```json
 {
+  "$schema": "https://camspec.org/schema/1.0.0/camspec.json",
   "version": "0.1.0",
   "manifest": [
     {
@@ -190,7 +227,7 @@ nav_order: 8
       "name": "Precision Gear 1",
       "priority": 100,
       "quantity": 1,
-      "units": "mm",
+      "units": "MM",
       "referenceTransform": {
         "rotation": [
 	        1, 0, 0, 
@@ -207,7 +244,7 @@ nav_order: 8
       "name": "Precision Gear 2",
       "priority": 100,
       "quantity": 1,
-      "units": "mm",
+      "units": "MM",
       "referenceTransform": {
         "rotation": [
 	        1, 0, 0, 
@@ -224,7 +261,7 @@ nav_order: 8
       "name": "Housing Base",
       "priority": 90,
       "quantity": 1,
-      "units": "mm",
+      "units": "MM",
       "referenceTransform": {
         "rotation": [
 	        1, 0, 0, 
@@ -241,7 +278,7 @@ nav_order: 8
       "name": "Filler Block",
       "priority": 10,
       "quantity": 1,
-      "units": "mm",
+      "units": "MM",
       "referenceTransform": {
         "rotation": [
 	        1, 0, 0, 
@@ -262,7 +299,7 @@ nav_order: 8
           [0, 1, 0]
           ],
         "tolerance": 5,
-        "units": "deg"
+        "units": "DEG"
       }
     },
     {
@@ -274,7 +311,7 @@ nav_order: 8
           [0, 1, 0]
           ],
         "tolerance": 5,
-        "units": "deg"
+        "units": "DEG"
       }
     }
   ],
@@ -283,7 +320,7 @@ nav_order: 8
       "type": "MIN_PART_DISTANCE",
       "value": {
         "distance": 3.0,
-        "units": "mm"
+        "units": "MM"
       }
     }
   ],

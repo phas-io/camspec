@@ -1,5 +1,4 @@
 {
-    "$schema": "https://camspec.org/schema/1.0.0/camspec.json",
     "type": "object",
     "required": [
         "version",
@@ -20,9 +19,6 @@
                 "required": [
                     "id",
                     "file",
-                    "format",
-                    "priority",
-                    "referenceTransform",
                     "units",
                     "quantity"
                 ],
@@ -65,11 +61,10 @@
                     "units": {
                         "type": "string",
                         "enum": [
-                            "mm",
-                            "in",
-                            "m",
-                            "cm",
-                            "ft"
+                            "MM",
+                            "CM",
+                            "FT",
+                            "IN"
                         ],
                         "description": "Units of the original CAD file"
                     },
@@ -189,8 +184,8 @@
                                     "units": {
                                         "type": "string",
                                         "enum": [
-                                            "deg",
-                                            "rad"
+                                            "DEG",
+                                            "RAD"
                                         ]
                                     }
                                 }
@@ -225,8 +220,8 @@
                                     "units": {
                                         "type": "string",
                                         "enum": [
-                                            "deg",
-                                            "rad"
+                                            "DEG",
+                                            "RAD"
                                         ]
                                     }
                                 }
@@ -253,10 +248,10 @@
                                     "units": {
                                         "type": "string",
                                         "enum": [
-                                            "mm",
-                                            "cm",
-                                            "in",
-                                            "ft"
+                                            "MM",
+                                            "CM",
+                                            "FT",
+                                            "IN"
                                         ]
                                     }
                                 }
@@ -310,10 +305,10 @@
                                     "units": {
                                         "type": "string",
                                         "enum": [
-                                            "mm",
-                                            "cm",
-                                            "in",
-                                            "ft"
+                                            "MM",
+                                            "CM",
+                                            "FT",
+                                            "IN"
                                         ]
                                     }
                                 }
@@ -357,10 +352,10 @@
                                     "units": {
                                         "type": "string",
                                         "enum": [
-                                            "mm",
-                                            "cm",
-                                            "in",
-                                            "ft"
+                                            "MM",
+                                            "CM",
+                                            "FT",
+                                            "IN"
                                         ]
                                     }
                                 }
@@ -394,10 +389,10 @@
                                             "units": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "mm",
-                                                    "cm",
-                                                    "in",
-                                                    "ft"
+                                                    "MM",
+                                                    "CM",
+                                                    "FT",
+                                                    "IN"
                                                 ]
                                             }
                                         }
@@ -423,10 +418,10 @@
                                             "units": {
                                                 "type": "string",
                                                 "enum": [
-                                                    "mm",
-                                                    "cm",
-                                                    "in",
-                                                    "ft"
+                                                    "MM",
+                                                    "CM",
+                                                    "FT",
+                                                    "IN"
                                                 ]
                                             }
                                         }
