@@ -11,6 +11,6 @@ The CAMSPEC format (.cams/.camspec) is a file format designed to communicate man
 
 JSON schema available here: `https://camspec.org/schema/1.0.0/camspec.json`
 
-The [specification is under the MIT license](https://camspec.org/LICENSE). It is available for both commercial and non-commercial usage. 
+The [specification is under the MIT license](https://camspec.org/LICENSE.md). It is available for both commercial and non-commercial usage. 
 
 The CAMSPEC format was developed by [Phasio](https://phas.io) and is currently maintained by the Phasio team.
