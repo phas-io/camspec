@@ -5,15 +5,15 @@ nav_order: 2
 
 # File Structure
 
-A `.cams` file is a ZIP archive containing:
+A `.camspec` file is a ZIP archive containing:
 
 ```
-archive.cams/
+archive.camspec/
   ├── models/           # Directory containing all CAD files
   │   ├── part1.stl
   │   ├── part2.step
   │   └── part3.obj
-  └── .cams.json       # Specification file
+  └── .camspec.json       # Specification file
 
 ```
 

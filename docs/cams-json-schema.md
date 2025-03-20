@@ -1,9 +1,9 @@
 ---
-title: .cams.json schema
+title: .camspec.json schema
 nav_order: 4
 ---
 
-# .cams.json schema
+# .camspec.json schema
 
 ## Core Structure
 
@@ -41,6 +41,7 @@ The `manifest` section lists all CAD models included in the specification. Each 
       "format": "STL_ASCII",
       "name": "Example Part",
       "priority": 75,
+      "quantity": 1,
       "units": "mm",
       "referenceTransform": {
         "rotation": [1, 0, 0, 0, 1, 0, 0, 0, 1],
@@ -60,6 +61,7 @@ The `manifest` section lists all CAD models included in the specification. Each 
 | format | Yes | One of: STEP, STL_ASCII, STL_BINARY, OBJ, BREP, IGES |
 | name | No | Human-readable identifier |
 | priority | Yes | Importance (0-100, higher = more important) |
+| quantity | Yes | The quantity of parts to produce |
 | units | Yes | Model units (mm, in, m, cm) |
 | referenceTransform | Yes | Transform to standard orientation |
 

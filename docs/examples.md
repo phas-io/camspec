@@ -25,6 +25,7 @@ nav_order: 8
       "format": "STL_ASCII",
       "name": "Precision Surface Part",
       "priority": 100,
+      "quantity": 5,
       "units": "mm",
       "referenceTransform": {
         "rotation": [
@@ -41,6 +42,7 @@ nav_order: 8
       "format": "STL_ASCII",
       "name": "Support Bracket",
       "priority": 50,
+      "quantity": 1,
       "units": "mm",
       "referenceTransform": {
         "rotation": [
@@ -92,6 +94,7 @@ nav_order: 8
       "format": "STEP",
       "name": "Main Housing",
       "priority": 100,
+      "quantity": 5,
       "units": "mm",
       "referenceTransform": {
         "rotation": [
@@ -108,6 +111,7 @@ nav_order: 8
       "format": "STEP",
       "name": "Cover Plate",
       "priority": 100,
+      "quantity": 5,
       "units": "in",
       "referenceTransform": {
         "rotation": [
@@ -124,6 +128,7 @@ nav_order: 8
       "format": "STL_ASCII",
       "name": "Optional Spacer",
       "priority": 25,
+      "quantity": 5,
       "units": "mm",
       "referenceTransform": {
         "rotation": [
@@ -184,6 +189,7 @@ nav_order: 8
       "format": "STL_ASCII",
       "name": "Precision Gear 1",
       "priority": 100,
+      "quantity": 1,
       "units": "mm",
       "referenceTransform": {
         "rotation": [
@@ -200,6 +206,7 @@ nav_order: 8
       "format": "STL_ASCII",
       "name": "Precision Gear 2",
       "priority": 100,
+      "quantity": 1,
       "units": "mm",
       "referenceTransform": {
         "rotation": [
@@ -216,6 +223,7 @@ nav_order: 8
       "format": "STL_ASCII",
       "name": "Housing Base",
       "priority": 90,
+      "quantity": 1,
       "units": "mm",
       "referenceTransform": {
         "rotation": [
@@ -232,6 +240,7 @@ nav_order: 8
       "format": "STL_ASCII",
       "name": "Filler Block",
       "priority": 10,
+      "quantity": 1,
       "units": "mm",
       "referenceTransform": {
         "rotation": [

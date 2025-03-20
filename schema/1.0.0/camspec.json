@@ -23,7 +23,8 @@
                     "format",
                     "priority",
                     "referenceTransform",
-                    "units"
+                    "units",
+                    "quantity"
                 ],
                 "properties": {
                     "id": {
@@ -55,6 +56,11 @@
                         "minimum": 0,
                         "maximum": 100,
                         "description": "Priority level (0-100). Higher numbers indicate higher priority"
+                    },
+                    "quantity": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "description": "The number of instances of this part"
                     },
                     "units": {
                         "type": "string",
