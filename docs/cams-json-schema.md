@@ -1,9 +1,9 @@
 ---
-title: .camspec.json schema
+title: camspec.json schema
 nav_order: 4
 ---
 
-# .camspec.json schema
+# camspec.json schema
 
 ## Core Structure
 

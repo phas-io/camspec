@@ -13,7 +13,7 @@ archive.camspec/
   │   ├── part1.stl
   │   ├── part2.step
   │   └── part3.obj
-  └── .camspec.json       # Specification file
+  └── camspec.json       # Specification file
 
 ```
 
