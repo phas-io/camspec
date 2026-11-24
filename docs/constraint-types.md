@@ -212,3 +212,106 @@ Defines allowable position bounds for a part.
 - Parts that must stay within specific build areas
 - Height-restricted builds
 - Thermal zone restrictions
+
+---
+
+# GD&T Tolerance Constraints
+
+Added in version 1.1.0.
+
+Tolerance constraints carry geometric dimensioning and tolerancing (GD&T) requirements for a feature of a part. They do not restrict where or how a part is placed. CAM software can use them to choose an orientation that keeps the toleranced features accurate, or to plan inspection.
+
+All points, normals and directions use the coordinate frame of the model file, before the `referenceTransform` of the manifest entry is applied. All lengths use the `units` of the constraint value, which must be the same as the units of the manifest entry. A part can have many tolerance constraints, of one type or of both types.
+
+## LINEAR_TOLERANCE
+
+Specifies the allowed distance between 2 feature planes of a part, for example the thickness of a flange or the width of a slot.
+
+### Schema
+```json
+{
+  "manifestId": "550e8400-e29b-41d4-a716-446655440000",
+  "type": "LINEAR_TOLERANCE",
+  "value": {
+    "name": "Flange thickness",
+    "planes": [
+      { "point": [0, 0, 0], "normal": [0, 0, -1] },
+      { "point": [0, 0, 12.5], "normal": [0, 0, 1] }
+    ],
+    "nominal": 12.5,
+    "upperDeviation": 0.1,
+    "lowerDeviation": -0.05,
+    "units": "MM"
+  }
+}
+```
+
+### Properties
+
+| Property | Type | Description |
+|:---------|:-----|:------------|
+| name | string | Optional label, for example the drawing callout |
+| planes[].point | array[3] | A point on the plane |
+| planes[].normal | array[3] | Unit normal of the plane, pointing out of the material |
+| nominal | number | Nominal distance between the planes (0 or more) |
+| upperDeviation | number | Signed upper deviation. The largest allowed distance is `nominal + upperDeviation` |
+| lowerDeviation | number | Signed lower deviation. The smallest allowed distance is `nominal + lowerDeviation` |
+| units | string | Must be "MM", "CM", "IN" or "FT" |
+
+### Usage Notes
+- `planes` has exactly 2 entries: plane A and plane B
+- The distance is measured from plane A to plane B, along the normal of plane A
+- The 2 planes are expected to be parallel
+- `lowerDeviation` must not be greater than `upperDeviation`
+
+### Example Use Cases
+- Wall, flange or rib thickness
+- Slot and step widths
+- Distances between mating faces
+
+---
+
+## CIRCULARITY_TOLERANCE
+
+Specifies a circularity (roundness) tolerance for a cylindrical feature, for example a bore or a shaft.
+
+### Schema
+```json
+{
+  "manifestId": "550e8400-e29b-41d4-a716-446655440000",
+  "type": "CIRCULARITY_TOLERANCE",
+  "value": {
+    "name": "Bearing bore",
+    "axis": {
+      "point": [10, 20, 5],
+      "direction": [0, 0, 1]
+    },
+    "radius": 11,
+    "length": 10,
+    "tolerance": 0.02,
+    "units": "MM"
+  }
+}
+```
+
+### Properties
+
+| Property | Type | Description |
+|:---------|:-----|:------------|
+| name | string | Optional label, for example the drawing callout |
+| axis.point | array[3] | A point on the axis. Where `length` is given, the center of the feature |
+| axis.direction | array[3] | Unit direction of the axis |
+| radius | number | Nominal radius of the feature (more than 0) |
+| length | number | Optional length of the feature along the axis, centered on `axis.point` |
+| tolerance | number | Width of the tolerance zone (more than 0) |
+| units | string | Must be "MM", "CM", "IN" or "FT" |
+
+### Usage Notes
+- The tolerance zone is the radial space between 2 concentric circles, in each cross-section perpendicular to the axis
+- The axis and the radius identify the feature. They do not set a size tolerance
+- The direction vector must be a unit vector
+
+### Example Use Cases
+- Bores for bearings and bushings
+- Shafts and pins
+- Round sealing surfaces

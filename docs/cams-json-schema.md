@@ -11,8 +11,8 @@ A CAMSPEC document consists of four main sections:
 
 ```json
 {
-  "$schema": "https://camspec.org/schema/1.0.0/camspec.json",
-  "version": "1.0.0",
+  "$schema": "https://camspec.org/schema/1.1.0/camspec.json",
+  "version": "1.1.0",
   "manifest": [...],
   "constraints": [...],
   "globalConstraints": [...],
@@ -25,7 +25,7 @@ A CAMSPEC document consists of four main sections:
 The `version` field follows semantic versioning (X.Y.Z format):
 ```json
 {
-  "version": "1.0.0"
+  "version": "1.1.0"
 }
 ```
 
