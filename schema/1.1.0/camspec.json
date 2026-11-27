@@ -336,18 +336,23 @@
                                         "items": {
                                             "type": "object",
                                             "required": [
-                                                "point",
-                                                "normal"
+                                                "center",
+                                                "normal",
+                                                "xAxis",
+                                                "width",
+                                                "height",
+                                                "fitOrientation",
+                                                "searchDistance"
                                             ],
                                             "properties": {
-                                                "point": {
+                                                "center": {
                                                     "type": "array",
                                                     "items": {
                                                         "type": "number"
                                                     },
                                                     "minItems": 3,
                                                     "maxItems": 3,
-                                                    "description": "A point on the plane [x, y, z], in the model frame"
+                                                    "description": "The center of the rectangle [x, y, z], on the plane, in the model frame"
                                                 },
                                                 "normal": {
                                                     "type": "array",
@@ -357,17 +362,54 @@
                                                     "minItems": 3,
                                                     "maxItems": 3,
                                                     "description": "Unit normal of the plane [x, y, z], pointing out of the material"
+                                                },
+                                                "xAxis": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "number"
+                                                    },
+                                                    "minItems": 3,
+                                                    "maxItems": 3,
+                                                    "description": "Unit vector in the plane [x, y, z], perpendicular to normal: the direction of width"
+                                                },
+                                                "width": {
+                                                    "type": "number",
+                                                    "exclusiveMinimum": 0,
+                                                    "description": "The size of the rectangle along xAxis"
+                                                },
+                                                "height": {
+                                                    "type": "number",
+                                                    "exclusiveMinimum": 0,
+                                                    "description": "The size of the rectangle along normal × xAxis"
+                                                },
+                                                "fitOrientation": {
+                                                    "type": "boolean",
+                                                    "description": "true: the scan fits the orientation and the position of the plane. false: it fits only the position, and keeps the orientation of the model. Use false for a small plane, where a fitted orientation is not accurate"
+                                                },
+                                                "searchDistance": {
+                                                    "type": "number",
+                                                    "exclusiveMinimum": 0,
+                                                    "description": "How far from the location in the model the scan searches for the plane, after it aligns the model to the scan. Too small, and a part with a large deviation has no match. Too large, and the scan can fit another surface nearby"
                                                 }
                                             }
                                         },
                                         "minItems": 2,
                                         "maxItems": 2,
-                                        "description": "The 2 feature planes [A, B]. The distance is measured from plane A to plane B, along the normal of plane A"
+                                        "description": "The 2 feature planes [A, B]. Each is a bounded rectangle: the scan fits the plane only inside it, so other surfaces near the same plane are not measured"
+                                    },
+                                    "measureDirection": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "number"
+                                        },
+                                        "minItems": 3,
+                                        "maxItems": 3,
+                                        "description": "Optional unit vector [x, y, z]: the direction to measure the distance along, for example an axis of the model frame. When absent, the normal of plane A"
                                     },
                                     "nominal": {
                                         "type": "number",
                                         "minimum": 0,
-                                        "description": "Nominal distance between the 2 planes"
+                                        "description": "Nominal distance between the 2 planes: |(B.center − A.center) · m|, with m the measureDirection, or the normal of plane A when it is absent"
                                     },
                                     "upperDeviation": {
                                         "type": "number",
@@ -395,7 +437,10 @@
                                 "required": [
                                     "axis",
                                     "radius",
+                                    "length",
                                     "tolerance",
+                                    "fitOrientation",
+                                    "searchDistance",
                                     "units"
                                 ],
                                 "properties": {
@@ -417,7 +462,7 @@
                                                 },
                                                 "minItems": 3,
                                                 "maxItems": 3,
-                                                "description": "A point on the axis [x, y, z], in the model frame. Where length is given, the center of the feature"
+                                                "description": "The start of the cylinder on the axis [x, y, z], in the model frame: the center of the opening of the feature, where the scan sees the surface best"
                                             },
                                             "direction": {
                                                 "type": "array",
@@ -426,7 +471,7 @@
                                                 },
                                                 "minItems": 3,
                                                 "maxItems": 3,
-                                                "description": "Unit direction of the axis [x, y, z]"
+                                                "description": "Unit direction of the axis [x, y, z], from the opening into the feature"
                                             }
                                         }
                                     },
@@ -438,12 +483,21 @@
                                     "length": {
                                         "type": "number",
                                         "exclusiveMinimum": 0,
-                                        "description": "Optional length of the feature along the axis, centered on axis.point"
+                                        "description": "The length of the cylinder along the axis, from axis.point in the direction of axis.direction"
                                     },
                                     "tolerance": {
                                         "type": "number",
                                         "exclusiveMinimum": 0,
                                         "description": "Width of the circularity tolerance zone: the radial distance between 2 concentric circles, in each cross-section perpendicular to the axis"
+                                    },
+                                    "fitOrientation": {
+                                        "type": "boolean",
+                                        "description": "true: the scan fits the orientation and the position of the cylinder. false: it fits only the position, and keeps the orientation of the model. Use false for a small cylinder, where a fitted orientation is not accurate"
+                                    },
+                                    "searchDistance": {
+                                        "type": "number",
+                                        "exclusiveMinimum": 0,
+                                        "description": "How far from the location in the model the scan searches for the cylinder, after it aligns the model to the scan. Too small, and a part with a large deviation has no match. Too large, and the scan can fit another surface nearby"
                                     },
                                     "units": {
                                         "type": "string",
